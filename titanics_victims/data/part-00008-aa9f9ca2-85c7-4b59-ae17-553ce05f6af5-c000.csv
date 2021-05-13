@@ -1,0 +1,268 @@
+PassengerId,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked,Address
+11708,3,"van Billiard, Master. James William",male,"",1,1,A/5. 851,14.5,"",S,131 E Mccullough Dr
+20820,1,"Dodge, Dr. Washington",male,53.0,1,1,33638,81.8583,A34,S,19 Rue Du Pont Neuf 1st arr 75001 Paris France
+4988,3,"Hellstrom, Miss. Hilda Maria",female,22.0,0,0,7548,8.9625,"",S,5500 28th St S E
+6470,3,"Sage, Mr. John George",male,"",1,9,CA. 2343,69.55,"",S,818 Charlestown Rd
+2338,2,"Schmidt, Mr. August",male,26.0,0,0,248659,13.0,"",S,21 rue F licien David 16th arr 75016 Paris France
+16927,1,"Rosenshine, Mr. George (Mr George Thorne)",male,46.0,0,0,PC 17585,79.2,"",C,San Felipe
+975,3,"Demetri, Mr. Marinko",male,"",0,0,349238,7.8958,"",S,36 Rue Saint Marc 2nd arr 75002 Paris France
+11591,3,"McNeill, Miss. Bridget",female,"",0,0,370368,7.75,"",Q,101 Wintergreen Dr
+11634,1,"McCaffry, Mr. Thomas Francis",male,46.0,0,0,13050,75.2417,C6,C,144 Praed St Paddington Westminster Borough London W2 1HU United Kingdom
+10063,3,"Abrahim, Mrs. Joseph (Sophie Halaut Easu)",female,18.0,0,0,2657,7.2292,"",C,380 W 7200 S
+12860,3,"Davies, Mr. Joseph",male,17.0,2,0,A/4 48873,8.05,"",S,Berruguete 126 Horta Guinard 08035 Barcelona Spain
+12813,3,"Goodwin, Miss. Jessie Allis",female,10.0,5,2,CA 2144,46.9,"",S,100 Vauxhall Walk Lambeth London SE11 5AL United Kingdom
+11516,3,"Storey, Mr. Thomas",male,60.5,0,0,3701,"","",S,110 rue Blomet 15th arr 75015 Paris France
+15379,3,"O'Donoghue, Ms. Bridget",female,"",0,0,364856,7.75,"",Q,Wagramer Stra e 16 18 22 Donaustadt 1220 Vienna Austria
+20917,1,"Payne, Mr. Vivian Ponsonby",male,23.0,0,0,12749,93.5,B24,S,8 rue Chambiges 8th arr 75008 Paris France
+15368,1,"Cornell, Mrs. Robert Clifford (Malvina Helen Lamson)",female,55.0,2,0,11770,25.7,C101,S,7 E Wellsboro St
+14182,3,"Murphy, Miss. Nora",female,"",0,0,36568,15.5,"",Q,102 S 2nd St
+6409,3,"Peacock, Master. Alfred Edward",male,0.75,1,1,SOTON/O.Q. 3101315,13.775,"",S,Hyde Park Corner Westminster Borough London SW1X 7TA United Kingdom
+1185,1,"Dodge, Dr. Washington",male,53.0,1,1,33638,81.8583,A34,S,18 Avenue De Suffren Entr e au 22 rue Jean Rey 15th arr 75015 Paris France
+7625,3,"Sage, Miss. Ada",female,"",8,2,CA. 2343,69.55,"",S,One Eastern Gateway Royal Victoria Dock Newham London E16 1FR United Kingdom
+6334,3,"McGowan, Miss. Katherine",female,35.0,0,0,9232,7.75,"",Q,Ballester 77 81 Gr cia 08023 Barcelona Spain
+8857,3,"Shine, Miss. Ellen Natalia",female,"",0,0,330968,7.7792,"",Q,1005 Belmont St
+11669,1,"Crosby, Mrs. Edward Gifford (Catherine Elizabeth Halstead)",female,64.0,1,1,112901,26.55,B26,S,24001 Lorenzo Rd
+12832,3,"Peacock, Mrs. Benjamin (Edith Nile)",female,26.0,0,2,SOTON/O.Q. 3101315,13.775,"",S,480 Main St
+7617,2,"McCrie, Mr. James Matthew",male,30.0,0,0,233478,13.0,"",S,35 Rue Benjamin Franklin 16th arr 75016 Paris France
+18222,3,"Carr, Miss. Jeannie",female,37.0,0,0,368364,7.75,"",Q,672 English Rd
+19318,1,"Stengel, Mrs. Charles Emil Henry (Annie May Morris)",female,43.0,1,0,11778,55.4417,C116,C,7411 Vantage Dr
+10424,2,"Pallas y Castello, Mr. Emilio",male,29.0,0,0,SC/PARIS 2147,13.8583,"",C,1000 Mechem Dr
+11614,2,"West, Miss. Barbara J",female,0.92,1,2,C.A. 34651,27.75,"",S,15750 Highway Bb
+18084,2,"Brown, Miss. Edith Eileen",female,15.0,0,2,29750,39.0,"",S,5805 Delmonico Dr
+1139,2,"Drew, Mr. James Vivian",male,42.0,1,1,28220,32.5,"",S,3747 29th St S E
+19283,2,"Corey, Mrs. Percy C (Mary Phyllis Elizabeth Miller)",female,"",0,0,F.C.C. 13534,21.0,"",S,226 Carondelet St
+20641,1,"Straus, Mrs. Isidor (Rosalie Ida Blun)",female,63.0,1,0,PC 17483,221.7792,C55 C57,S,225 Edgware Road Westminster Borough London W2 1JU United Kingdom
+2286,3,"Khalil, Mr. Betros",male,"",1,0,2660,14.4542,"",C,Via Spallanzani 40 Central Station 20129 Milan Italy
+10287,3,"Wiklund, Mr. Karl Johan",male,21.0,1,0,3101266,6.4958,"",S,86 Quai D Austerlitz 13th arr 75013 Paris France
+7733,2,"Laroche, Miss. Louise",female,1.0,1,2,SC/Paris 2123,41.5792,"",C,22 rue d Antin 2nd arr 75002 Paris France
+9149,1,"Carrau, Mr. Jose Pedro",male,17.0,0,0,113059,47.1,"",S,2951 Touhy Ave
+8768,1,"Flegenheim, Mrs. Alfred (Antoinette)",female,"",0,0,PC 17598,31.6833,"",S,12016 N Sutton Bay Rd
+8832,3,"Barry, Miss. Julia",female,27.0,0,0,330844,7.8792,"",Q,485 Douglas Ave
+6442,1,"White, Mrs. John Stuart (Ella Holmes)",female,55.0,0,0,PC 17760,135.6333,C32,C,150 Royal Plaza Dr
+18304,1,"Smith, Mrs. Lucien Philip (Mary Eloise Hughes)",female,18.0,1,0,13695,60.0,C31,S,Corso Magenta 19 Milan City Center 20123 Milan Italy
+7504,1,"Moore, Mr. Clarence Bloomfield",male,47.0,0,0,113796,42.4,"",S,Ramblas 111 Ciutat Vella 08002 Barcelona Spain
+14102,2,"Watt, Miss. Bertha J",female,12.0,0,0,C.A. 33595,15.75,"",S,1923 Dover St
+14272,1,"Rheims, Mr. George Alexander Lucien",male,"",0,0,PC 17607,39.6,"",S,2790 Blue Star Hwy
+9022,2,"Parker, Mr. Clifford Richard",male,28.0,0,0,SC 14888,10.5,"",S,Maslinica Bay
+4857,3,"Sap, Mr. Julius",male,25.0,0,0,345768,9.5,"",S,228 Rue De Rivoli 1st arr 75001 Paris France
+14359,2,"Cotterill, Mr. Henry Harry",male,21.0,0,0,29107,11.5,"",S,Via Forcella 6 Navigli 20144 Milan Italy
+10137,1,"Case, Mr. Howard Brown",male,49.0,0,0,19924,26.0,"",S,67 Waterview Ln
+3889,3,"Asplund, Master. Carl Edgar",male,5.0,4,2,347077,31.3875,"",S,Avinyo 30 Ciutat Vella 08002 Barcelona Spain
+20872,3,"Abelseth, Miss. Karen Marie",female,16.0,0,0,348125,7.65,"",S,4259 Interstate 35 N
+18116,2,"Collett, Mr. Sidney C Stuart",male,24.0,0,0,28034,10.5,"",S,Avenida Sarri 50 Les Corts 08029 Barcelona Spain
+4867,1,"Bucknell, Mrs. William Robert (Emma Eliza Ward)",female,60.0,0,0,11813,76.2917,D15,C,1223 Radford Blvd
+3852,3,"Sage, Mr. John George",male,"",1,9,CA. 2343,69.55,"",S,Carburton Street Westminster Borough London W1W 5EE United Kingdom
+3753,3,"Hyman, Mr. Abraham",male,"",0,0,3470,7.8875,"",S,3 Rue Caulaincourt 18th arr 75018 Paris France
+4941,1,"Schabert, Mrs. Paul (Emma Mock)",female,35.0,1,0,13236,57.75,C28,C,Piazza della Repubblica 13 Central Station 20124 Milan Italy
+14138,1,"Bird, Miss. Ellen",female,29.0,0,0,PC 17483,221.7792,C97,S,Epping Forest 30 Oak Hill London IG8 9NY United Kingdom
+20829,2,"Phillips, Mr. Escott Robert",male,43.0,0,1,S.O./P.P. 2,21.0,"",S,23500 Welcome Way Dr
+14364,3,"Risien, Mrs. Samuel (Emma)",female,"",0,0,364498,14.5,"",S,2935 N Germantown Rd
+13064,1,"Lines, Mrs. Ernest H (Elizabeth Lindsey James)",female,51.0,0,1,PC 17592,39.4,D28,S,1003 Tahoe Boulevard (sr 28)
+9046,3,"Olsson, Mr. Oscar Wilhelm",male,32.0,0,0,347079,7.775,"",S,8 Northumberland Avenue Westminster Borough London WC2N 5BY United Kingdom
+20810,3,"Touma, Miss. Maria Youssef",female,9.0,1,1,2650,15.2458,"",C,Gran V a de Les Corts Catalanes 647 Eixample 08010 Barcelona Spain
+11548,1,"Douglas, Mrs. Frederick Charles (Mary Helene Baxter)",female,27.0,1,1,PC 17558,247.5208,B58 B60,C,7 Rue Paul Albert 18th arr 75018 Paris France
+9063,2,"Rogers, Mr. Reginald Harry",male,19.0,0,0,28004,10.5,"",S,134 George Street Westminster Borough London W1H 5DN United Kingdom
+11502,3,"Drapkin, Miss. Jennie",female,23.0,0,0,SOTON/OQ 392083,8.05,"",S,Via G Arimondi 12 Sempione 20155 Milan Italy
+2201,3,"Kelly, Mr. James",male,34.5,0,0,330911,7.8292,"",Q,101 Main St
+9112,3,"Caram, Mr. Joseph",male,"",1,0,2689,14.4583,"",C,50 rue de Richelieu 1st arr 75001 Paris France
+3554,1,"Kimball, Mrs. Edwin Nelson Jr (Gertrude Parsons)",female,45.0,1,0,11753,52.5542,D19,S,1 Bis Rue De Vaugirard 6th arr 75006 Paris France
+10270,1,"Head, Mr. Christopher",male,42.0,0,0,113038,42.5,B11,S,Coburgbastei 4 01 Innere Stadt 1010 Vienna Austria
+19366,1,"Crafton, Mr. John Bertram",male,"",0,0,113791,26.55,"",S,16 22 Great Russell Street Camden London WC1B 3NN United Kingdom
+19628,3,"Naughton, Miss. Hannah",female,"",0,0,365237,7.75,"",Q,Corso Di Porta Nuova 1 Milan City Center 20121 Milan Italy
+5149,2,"Davies, Mrs. John Morgan (Elizabeth Agnes Mary White)",female,48.0,0,2,C.A. 33112,36.75,"",S,580 Nantahala Cabins Ln
+19508,1,"Rheims, Mr. George Alexander Lucien",male,"",0,0,PC 17607,39.6,"",S,33 rue Raymond Losserand 14th arr 75014 Paris France
+7799,2,"Ware, Mrs. John James (Florence Louise Long)",female,31.0,0,0,CA 31352,21.0,"",S,131 W Lincoln Rd
+2363,2,"Wright, Miss. Marion",female,26.0,0,0,220844,13.5,"",S,2020 N Federal Blvd
+11698,3,"Cor, Mr. Ivan",male,27.0,0,0,349229,7.8958,"",S,1071 E El Camino Real
+20809,3,"Fleming, Miss. Honora",female,"",0,0,364859,7.75,"",Q,9 Knaresborough Place Kensington and Chelsea London SW5 0TP United Kingdom
+2303,3,"Foley, Mr. William",male,"",0,0,365235,7.75,"",Q,28 30 Seymour Street Westminster Borough London W1H 7JB United Kingdom
+20625,3,"Braf, Miss. Elin Ester Maria",female,20.0,0,0,347471,7.8542,"",S,Piazza Oberdan 12 Milan City Center 20129 Milan Italy
+19557,3,"Betros, Master. Seman",male,"",0,0,2622,7.2292,"",C,500 Casa Del Noyo
+5108,3,"Ford, Mr. Arthur",male,"",0,0,A/5 1478,8.05,"",S,3100 I 70 Doctor S E
+20732,1,"Omont, Mr. Alfred Fernand",male,"",0,0,F.C. 12998,25.7417,"",C,232 Boulevard Raspail 14th arr 75014 Paris France
+10296,2,"Christy, Mrs. (Alice Frances)",female,45.0,0,2,237789,30.0,"",S,3024 Tv Rd
+16638,3,"Sap, Mr. Julius",male,25.0,0,0,345768,9.5,"",S,14001 Walden Rd
+5024,1,"Omont, Mr. Alfred Fernand",male,"",0,0,F.C. 12998,25.7417,"",C,Via Riccardo Lombardi 9 11 20153 Milan Italy
+1132,1,"Lindstrom, Mrs. Carl Johan (Sigrid Posse)",female,55.0,0,0,112377,27.7208,"",C,2005 S Stephenson Ave
+8858,1,"Evans, Miss. Edith Corse",female,36.0,0,0,PC 17531,31.6792,A29,C,33 Roland Gardens Kensington and Chelsea London SW7 3PF United Kingdom
+6398,1,"McCaffry, Mr. Thomas Francis",male,46.0,0,0,13050,75.2417,C6,C,1915 6th St N
+6186,3,"Davison, Mr. Thomas Henry",male,"",1,0,386525,16.1,"",S,12 rue Saint Roch 1st arr 75001 Paris France
+8908,2,"Wright, Miss. Marion",female,26.0,0,0,220844,13.5,"",S,23 Leinster Gardens Westminster Borough London W2 3AN United Kingdom
+3924,1,"Oliva y Ocana, Dona. Fermina",female,39.0,0,0,PC 17758,108.9,C105,C,49 50 St John s Square Islington London EC1V 4JJ United Kingdom
+16732,3,"Lefebre, Mrs. Frank (Frances)",female,"",0,4,4133,25.4667,"",S,6 rue Buffault 9th arr 75009 Paris France
+8752,3,"Connolly, Miss. Kate",female,30.0,0,0,330972,7.6292,"",Q,E 5 Karayolu (yanyol) No 20
+11519,3,"Duquemin, Mr. Joseph",male,24.0,0,0,S.O./P.P. 752,7.55,"",S,151 bis Rue de Rennes 6th arr 75006 Paris France
+16803,2,"Quick, Miss. Winifred Vera",female,8.0,1,1,26360,26.0,"",S,John M Keynesplein 2 Slotervaart 1066 EP Amsterdam Netherlands
+19397,1,"Compton, Mrs. Alexander Taylor (Mary Eliza Ingersoll)",female,64.0,0,2,PC 17756,83.1583,E45,C,10 Carlisle Street Westminster Borough London W1D 3BR United Kingdom
+8897,3,"Matinoff, Mr. Nicola",male,"",0,0,349255,7.8958,"",C,Gran Via 559 Eixample 08012 Barcelona Spain
+8814,1,"Tucker, Mr. Gilbert Milligan Jr",male,31.0,0,0,2543,28.5375,C53,C,Am Hof 2 01 Innere Stadt 1010 Vienna Austria
+15375,2,"Lamb, Mr. John Joseph",male,"",0,0,240261,10.7083,"",Q,45 Rue des Acacias 17th arr 75017 Paris France
+14009,3,"Daher, Mr. Shedid",male,22.5,0,0,2698,7.225,"",C,20 Rue La Fayette 9th arr 75009 Paris France
+1197,1,"Crosby, Mrs. Edward Gifford (Catherine Elizabeth Halstead)",female,64.0,1,1,112901,26.55,B26,S,100 Holiday Dr
+7777,2,"Fillbrook, Mr. Joseph Charles",male,18.0,0,0,C.A. 15185,10.5,"",S,Hertha Firnberg Stra e 5 10 Favoriten 1100 Vienna Austria
+4884,2,"Corey, Mrs. Percy C (Mary Phyllis Elizabeth Miller)",female,"",0,0,F.C.C. 13534,21.0,"",S,21 Holiday Blvd
+20637,2,"Stanton, Mr. Samuel Ward",male,41.0,0,0,237734,15.0458,"",C,Via Layetana 3 Ciutat Vella 08003 Barcelona Spain
+5143,1,"Kreuchen, Miss. Emilie",female,39.0,0,0,24160,211.3375,"",S,26 42 Bond Street Ealing London W5 5AA United Kingdom
+994,3,"Foley, Mr. William",male,"",0,0,365235,7.75,"",Q,Hietzinger Hauptstra e 134 13 Hietzing 1130 Vienna Austria
+4902,3,"Demetri, Mr. Marinko",male,"",0,0,349238,7.8958,"",S,426 E Perry St
+17011,1,"Minahan, Mrs. William Edward (Lillian E Thorpe)",female,37.0,1,0,19928,90.0,C78,Q,1 Rue Du G n ral Blaise 11th arr 75011 Paris France
+10468,3,"Spector, Mr. Woolf",male,"",0,0,A.5. 3236,8.05,"",S,1 Shortlands Hammersmith and Fulham London W6 8DR United Kingdom
+16935,1,"Maguire, Mr. John Edward",male,30.0,0,0,110469,26.0,C106,S,35 Rue La Bruy re 9th arr 75009 Paris France
+6234,3,"Buckley, Mr. Daniel",male,21.0,0,0,330920,7.8208,"",Q,5 Rue Belidor 17th arr 75017 Paris France
+20788,3,"Nilsson, Mr. August Ferdinand",male,21.0,0,0,350410,7.8542,"",S,62065 27th St
+9032,3,"Franklin, Mr. Charles (Charles Fardon)",male,"",0,0,SOTON/O.Q. 3101314,7.25,"",S,Ronda Universitat 21 Eixample 08007 Barcelona Spain
+14387,2,"Nourney, Mr. Alfred (Baron von Drachstedt)",male,20.0,0,0,SC/PARIS 2166,13.8625,D38,C,22 28 Broadway Westminster Borough London SW1H 0BH United Kingdom
+7503,3,"Burns, Miss. Mary Delia",female,18.0,0,0,330963,7.8792,"",Q,2727 Us Highway 17 N
+16922,2,"Nesson, Mr. Israel",male,26.0,0,0,244368,13.0,F2,S,3 5920 Kuhio Hwy
+10143,3,"O'Donoghue, Ms. Bridget",female,"",0,0,364856,7.75,"",Q,Schottenring 3 01 Innere Stadt 1010 Vienna Austria
+16977,2,"Cotterill, Mr. Henry Harry",male,21.0,0,0,29107,11.5,"",S,33 Rue Dauphine 6th arr 75006 Paris France
+18119,3,"Andersen, Mr. Albert Karvin",male,32.0,0,0,C 4001,22.525,"",S,Landstra er Hauptstra e 120 03 Landstra e 1030 Vienna Austria
+922,2,"Louch, Mr. Charles Alexander",male,50.0,1,0,SC/AH 3085,26.0,"",S,102 Bd De Grenelle 15th arr 75015 Paris France
+2426,3,"Moubarek, Mrs. George (Omine Amenia Alexander)",female,"",0,2,2661,15.2458,"",C,34 Rue de Buci 6th arr 75006 Paris France
+20634,3,"Ryan, Mr. Edward",male,"",0,0,383162,7.75,"",Q,Carr Federal 307 Chet Pto Juarez
+19240,1,"Flegenheim, Mrs. Alfred (Antoinette)",female,"",0,0,PC 17598,31.6833,"",S,8 Avenue Rapp 7th arr 75007 Paris France
+13066,2,"Gilbert, Mr. William",male,47.0,0,0,C.A. 30769,10.5,"",S,68 W Hwy Hwy 380
+1152,3,"de Messemaeker, Mr. Guillaume Joseph",male,36.5,1,0,345572,17.4,"",S,Lepanto 406 Horta Guinard 08025 Barcelona Spain
+7761,1,"Kreuchen, Miss. Emilie",female,39.0,0,0,24160,211.3375,"",S,1210 Brukner Dr
+12679,3,"Connolly, Miss. Kate",female,30.0,0,0,330972,7.6292,"",Q,9 rue frochot 9th arr 75009 Paris France
+20704,1,"Stengel, Mr. Charles Emil Henry",male,54.0,1,0,11778,55.4417,C116,C,61 Gloucester Road Kensington and Chelsea London SW7 4PE United Kingdom
+14165,3,"Lane, Mr. Patrick",male,"",0,0,7935,7.75,"",Q,35 Boulevard de la tour Maubourg 7th arr 75007 Paris France
+3600,3,"Dyker, Mrs. Adolf Fredrik (Anna Elisabeth Judith Andersson)",female,22.0,1,0,347072,13.9,"",S,2 rue Geoffroy Marie 9th arr 75009 Paris France
+7553,3,"Thomas, Mr. John",male,"",0,0,2681,6.4375,"",C,Wurzbachgasse 21 15 Rudolfsheim F nfhaus 1150 Vienna Austria
+18032,3,"Carver, Mr. Alfred John",male,28.0,0,0,392095,7.25,"",S,42 Rue Des Petites Ecuries 10th arr 75010 Paris France
+20739,2,"Deacon, Mr. Percy William",male,17.0,0,0,S.O.C. 14879,73.5,"",S,Prinsengracht 315 331 Amsterdam City Center 1016 GZ Amsterdam Netherlands
+4940,3,"Kiernan, Mr. John",male,"",1,0,367227,7.75,"",Q,17 Rue de Caumartin 9th arr 75009 Paris France
+4983,2,"Peruschitz, Rev. Joseph Maria",male,41.0,0,0,237393,13.0,"",S,Piazza Luigi di Savoia 20 Central Station 20124 Milan Italy
+5059,1,"Lindstrom, Mrs. Carl Johan (Sigrid Posse)",female,55.0,0,0,112377,27.7208,"",C,33 Albemarle Street Mayfair Westminster Borough London W1S 4BP United Kingdom
+20842,3,"Hagardon, Miss. Kate",female,17.0,0,0,AQ/3. 30631,7.7333,"",Q,Via Masaccio 19 Fiera Milano City 20149 Milan Italy
+2416,1,"Head, Mr. Christopher",male,42.0,0,0,113038,42.5,B11,S,1400 Historic Dr
+10378,1,"Rowe, Mr. Alfred G",male,33.0,0,0,113790,26.55,"",S,De Boelelaan 2 Zuideramstel 1083 HJ Amsterdam Netherlands
+7814,2,"Cotterill, Mr. Henry Harry",male,21.0,0,0,29107,11.5,"",S,108 N Yellowstone Ave
+10437,3,"Risien, Mrs. Samuel (Emma)",female,"",0,0,364498,14.5,"",S,942 Main St
+5113,3,"Wittevrongel, Mr. Camille",male,36.0,0,0,345771,9.5,"",S,3060 Green Mountain Dr
+12719,1,"Chevre, Mr. Paul Romaine",male,45.0,0,0,PC 17594,29.7,A9,C,13 rue Saint Sulpice 6th arr 75006 Paris France
+9003,3,"Niklasson, Mr. Samuel",male,28.0,0,0,363611,8.05,"",S,Sloane Square Kensington and Chelsea London SW1W 8EG United Kingdom
+5173,3,"Dean, Miss. Elizabeth Gladys Millvina",female,0.17,1,2,C.A. 2315,20.575,"",S,11617 Research Blvd
+6209,1,"Straus, Mr. Isidor",male,67.0,1,0,PC 17483,221.7792,C55 C57,S,1765 Young St
+6169,1,"Franklin, Mr. Thomas Parham",male,"",0,0,113778,26.55,D34,S,Roemer Visscherstraat 8 10 Oud West 1054 EV Amsterdam Netherlands
+19624,2,"Ware, Mr. William Jeffery",male,23.0,1,0,28666,10.5,"",S,Hintschiggasse 1 10 Favoriten 1100 Vienna Austria
+14251,3,"Pokrnic, Mr. Mate",male,17.0,0,0,315095,8.6625,"",S,Magdalenes 13 15 Ciutat Vella 08002 Barcelona Spain
+5086,3,"Warren, Mr. Charles William",male,"",0,0,C.A. 49867,7.55,"",S,71 Rathe Rd
+12779,3,"Buckley, Mr. Daniel",male,21.0,0,0,330920,7.8208,"",Q,200 Second St
+1291,3,"Conlon, Mr. Thomas Henry",male,31.0,0,0,21332,7.7333,"",Q,Piazzale Lugano 10 Bovisa 20158 Milan Italy
+7611,3,"Asplund, Mr. Carl Oscar Vilhelm Gustafsson",male,40.0,1,5,347077,31.3875,"",S,1100 N Mississippi Ave
+2554,2,"Herman, Mr. Samuel",male,49.0,1,2,220845,65.0,"",S,42 46 Chiswell Street City of London London EC1Y 4SB United Kingdom
+8812,3,"Burns, Miss. Mary Delia",female,18.0,0,0,330963,7.8792,"",Q,95 Route 17k
+9024,2,"Ware, Mr. John James",male,30.0,1,0,CA 31352,21.0,"",S,6448 Muirfield Dr
+3860,1,"Greenfield, Mrs. Leo David (Blanche Strouse)",female,45.0,0,1,PC 17759,63.3583,D10 D12,C,99 Bis Rue De Rome 17th arr 75017 Paris France
+10069,1,"Chaffee, Mrs. Herbert Fuller (Carrie Constance Toogood)",female,47.0,1,0,W.E.P. 5734,61.175,E31,S,Via Silvio Pellico 2 Milan City Center 20121 Milan Italy
+14340,3,"O'Keefe, Mr. Patrick",male,"",0,0,368402,7.75,"",Q,30 Barkston Gardens Kensington and Chelsea London SW5 0EN United Kingdom
+12962,3,"Ford, Mr. Arthur",male,"",0,0,A/5 1478,8.05,"",S,Via Panfilo Castaldi 7 Central Station 20124 Milan Italy
+3812,2,"Phillips, Mr. Escott Robert",male,43.0,0,1,S.O./P.P. 2,21.0,"",S,8 14 Talbot Sq Paddington Westminster Borough London W2 1TS United Kingdom
+15476,2,"Maybery, Mr. Frank Hubert",male,40.0,0,0,239059,16.0,"",S,110 E Cedar St
+19567,2,"Walcroft, Miss. Nellie",female,31.0,0,0,F.C.C. 13528,21.0,"",S,13 15 Gower Street Camden London WC1E 6HE United Kingdom
+19373,3,"Duquemin, Mr. Joseph",male,24.0,0,0,S.O./P.P. 752,7.55,"",S,1477 Casino Strip Resort Blvd
+19487,3,"Pokrnic, Mr. Mate",male,17.0,0,0,315095,8.6625,"",S,788 Springfield Rd
+12739,3,"Burns, Miss. Mary Delia",female,18.0,0,0,330963,7.8792,"",Q,603 Constitution Dr
+19309,3,"Pedersen, Mr. Olaf",male,"",0,0,345498,7.775,"",S,40 Apollonos St
+9026,3,"Oreskovic, Miss. Jelka",female,23.0,0,0,315085,8.6625,"",S,6 Harding Ln
+1252,3,"Sage, Master. William Henry",male,14.5,8,2,CA. 2343,69.55,"",S,Avenida Rius y Taulet 1 3 Sants Montju c 08004 Barcelona Spain
+19326,3,"Willer, Mr. Aaron (Abi Weller)",male,"",0,0,3410,8.7125,"",S,One Eastern Gateway Royal Victoria Dock Newham London E16 1FR United Kingdom
+7725,3,"Mardirosian, Mr. Sarkis",male,"",0,0,2655,7.2292,F E46,C,41 rue de Clichy 9th arr 75009 Paris France
+2569,1,"Gibson, Mrs. Leonard (Pauline C Boeson)",female,45.0,0,1,112378,59.4,"",C,1888 Cumberland Falls Hwy
+7841,1,"Frauenthal, Mr. Isaac Gerald",male,43.0,1,0,17765,27.7208,D40,C,Cardenal Reig 11 Les Corts 08028 Barcelona Spain
+19299,1,"Straus, Mr. Isidor",male,67.0,1,0,PC 17483,221.7792,C55 C57,S,Via San Tomaso 6 Milan City Center 20121 Milan Italy
+7700,3,"Klasen, Miss. Gertrud Emilia",female,1.0,1,1,350405,12.1833,"",S,600 E Columbia River Hwy
+7559,1,"Schabert, Mrs. Paul (Emma Mock)",female,35.0,1,0,13236,57.75,C28,C,Fizeaustraat 2 Oost 1097 SC Amsterdam Netherlands
+7827,1,"Payne, Mr. Vivian Ponsonby",male,23.0,0,0,12749,93.5,B24,S,806 W Interstate 20
+1137,1,"Kenyon, Mr. Frederick R",male,41.0,1,0,17464,51.8625,D21,S,5317 Pratt Rd
+19524,1,"Allison, Mr. Hudson Joshua Creighton",male,30.0,1,2,113781,151.55,C22 C26,S,11 Bis Rue Jules Chaplain 6th arr 75006 Paris France
+7850,3,"Spector, Mr. Woolf",male,"",0,0,A.5. 3236,8.05,"",S,6500 Redwood Dr
+5097,2,"Ware, Mr. John James",male,30.0,1,0,CA 31352,21.0,"",S,309 S Meridian Ave
+3880,2,"Giles, Mr. Edgar",male,21.0,1,0,28133,11.5,"",S,Hollandstra e 3 02 Leopoldstadt 1020 Vienna Austria
+9055,3,"Hansen, Mrs. Claus Peter (Jennie L Howard)",female,45.0,1,0,350026,14.1083,"",S,Johann Staud Stra e 32 16 Ottakring 1160 Vienna Austria
+14116,3,"Dintcheff, Mr. Valtcho",male,43.0,0,0,349226,7.8958,"",S,Viale Bligny 56 Milan City Center 20136 Milan Italy
+3636,3,"Brobeck, Mr. Karl Rudolf",male,22.0,0,0,350045,7.7958,"",S,92 Southampton Row Camden London WC1B 4BH United Kingdom
+8909,3,"Pearce, Mr. Ernest",male,"",0,0,343271,7.0,"",S,2 Rue De Parme 9th arr 75009 Paris France
+3512,2,"Myles, Mr. Thomas Francis",male,62.0,0,0,240276,9.6875,"",Q,Via Gb Vico 142
+12752,3,"Doyle, Miss. Elizabeth",female,24.0,0,0,368702,7.75,"",Q,75 Gower Street Camden London WC1E 6HJ United Kingdom
+1079,3,"Davies, Mr. Joseph",male,17.0,2,0,A/4 48873,8.05,"",S,1119 E Lakeshore Dr
+7566,3,"Petersen, Mr. Marius",male,24.0,0,0,342441,8.05,"",S,31 36 Leicester Square Westminster Borough London WC2H 7LH United Kingdom
+3831,3,"Krekorian, Mr. Neshan",male,25.0,0,0,2654,7.2292,F E57,C,9435 Highway 49
+14278,2,"Laroche, Miss. Louise",female,1.0,1,2,SC/Paris 2123,41.5792,"",C,21 rue Moli re 1st arr 75001 Paris France
+2344,2,"Beauchamp, Mr. Henry James",male,28.0,0,0,244358,26.0,"",S,1701 N Moore Ave
+16706,3,"Buckley, Mr. Daniel",male,21.0,0,0,330920,7.8208,"",Q,67 Waterview Ln
+1196,3,"McCarthy, Miss. Catherine Katie",female,"",0,0,383123,7.75,"",Q,Via Santa Radegonda 14 Milan City Center 20121 Milan Italy
+7842,2,"Nourney, Mr. Alfred (Baron von Drachstedt)",male,20.0,0,0,SC/PARIS 2166,13.8625,D38,C,Pintor Fortuny 13 Ciutat Vella 08001 Barcelona Spain
+14137,3,"Duquemin, Mr. Joseph",male,24.0,0,0,S.O./P.P. 752,7.55,"",S,1 3 Rue d Argentine 16th arr 75116 Paris France
+10205,1,"Earnshaw, Mrs. Boulton (Olive Potter)",female,23.0,0,1,11767,83.1583,C54,C,One Ham Yard Westminster Borough London W1D 7DT United Kingdom
+11757,2,"Gilbert, Mr. William",male,47.0,0,0,C.A. 30769,10.5,"",S,40 trinity square City of London London EC3N 4DJ United Kingdom
+15454,3,"Pearce, Mr. Ernest",male,"",0,0,343271,7.0,"",S,10 rue de Vaugirard 6th arr 75006 Paris France
+19383,3,"Kink-Heilmann, Mrs. Anton (Luise Heilmann)",female,26.0,1,1,315153,22.025,"",S,200 S
+3807,3,"Samaan, Mr. Hanna",male,"",2,0,2662,21.6792,"",C,Bergara 11 Eixample 08002 Barcelona Spain
+2552,2,"Stokes, Mr. Philip Joseph",male,25.0,0,0,F.C.C. 13540,10.5,"",S,Via Giacomo Watt 13 Famagosta 20143 Milan Italy
+2615,1,"Oliva y Ocana, Dona. Fermina",female,39.0,0,0,PC 17758,108.9,C105,C,Prinsengracht 315 331 Amsterdam City Center 1016 GZ Amsterdam Netherlands
+915,1,"Williams, Mr. Richard Norris II",male,21.0,0,1,PC 17597,61.3792,"",C,123 boulevard S bastopol 2nd arr 75002 Paris France
+9089,1,"Cardeza, Mrs. James Warburton Martinez (Charlotte Wardle Drake)",female,58.0,0,1,PC 17755,512.3292,B51 B53 B55,C,13 Rue De La Paix 2nd arr 75002 Paris France
+11412,1,"Bucknell, Mrs. William Robert (Emma Eliza Ward)",female,60.0,0,0,11813,76.2917,D15,C,804 W Interstate 20
+18199,1,"Rheims, Mr. George Alexander Lucien",male,"",0,0,PC 17607,39.6,"",S,40 avenue de Friedland 8th arr 75008 Paris France
+12691,3,"Ilmakangas, Miss. Ida Livija",female,27.0,1,0,STON/O2. 3101270,7.925,"",S,Aribau 54 Eixample 08011 Barcelona Spain
+2330,3,"Petersen, Mr. Marius",male,24.0,0,0,342441,8.05,"",S,7644 Caterpillar Ct S W
+8960,3,"Andersson, Miss. Ida Augusta Margareta",female,38.0,4,2,347091,7.775,"",S,Corso Sempione 91 Fiera Milano City 20149 Milan Italy
+11635,3,"Fox, Mr. Patrick",male,"",0,0,368573,7.75,"",Q,8 Avenue Rapp 7th arr 75007 Paris France
+13983,3,"Wilkes, Mrs. James (Ellen Needs)",female,47.0,1,0,363272,7.0,"",S,2759 Mcdonald Rd
+15524,3,"Linehan, Mr. Michael",male,"",0,0,330971,7.8792,"",Q,7 Western Gateway Royal Victoria Dock Newham London E16 1AA United Kingdom
+16913,3,"Carr, Miss. Jeannie",female,37.0,0,0,368364,7.75,"",Q,2100 N Ocean Blvd
+15582,3,"Daly, Miss. Margaret Marcella Maggie",female,30.0,0,0,382650,6.95,"",Q,301 Old Bank Rd
+18213,3,"McCarthy, Miss. Catherine Katie",female,"",0,0,383123,7.75,"",Q,Fizeaustraat 2 Oost 1097 SC Amsterdam Netherlands
+20604,1,"Cornell, Mrs. Robert Clifford (Malvina Helen Lamson)",female,55.0,2,0,11770,25.7,C101,S,1535 Broadway
+18100,1,"Salomon, Mr. Abraham L",male,"",0,0,111163,26.0,"",S,Coopers Row City of London London EC3N 2BQ United Kingdom
+2295,1,"Birnbaum, Mr. Jakob",male,25.0,0,0,13905,26.0,"",C,Via Masaccio 19 Fiera Milano City 20149 Milan Italy
+16899,3,"Johansson, Mr. Nils",male,29.0,0,0,347467,7.8542,"",S,16 Sumner Place Kensington and Chelsea London SW7 3EG United Kingdom
+2539,2,"Denbury, Mr. Herbert",male,25.0,0,0,C.A. 31029,31.5,"",S,17 rue de Richelieu 1st arr 75001 Paris France
+10149,1,"Birnbaum, Mr. Jakob",male,25.0,0,0,13905,26.0,"",C,Coram Street Camden London WC1N 1HT United Kingdom
+16801,3,"Danbom, Master. Gilbert Sigvard Emanuel",male,0.33,0,2,347080,14.4,"",S,15494 Palmdale Rd
+11489,3,"Cribb, Miss. Laura Alice",female,17.0,0,1,371362,16.1,"",S,Enric Granados 62 64 Eixample 08008 Barcelona Spain
+19258,3,"Karun, Mr. Franz",male,39.0,0,1,349256,13.4167,"",C,14 rue de la Tremoille 8th arr 75008 Paris France
+2529,2,"Clarke, Mr. Charles Valentine",male,29.0,1,0,2003,26.0,"",S,119 Grand Dr
+11397,3,"Johnston, Mrs. Andrew G (Elizabeth Lily Watson)",female,"",1,2,W./C. 6607,23.45,"",S,39 40 Cleveland Square Westminster Borough London W2 6DA United Kingdom
+16675,1,"Keeping, Mr. Edwin",male,32.5,0,0,113503,211.5,C132,C,372 Strand Westminster Borough London WC2R 0JJ United Kingdom
+7734,3,"Samaan, Mr. Hanna",male,"",2,0,2662,21.6792,"",C,8 Rue Jean Goujon 8th arr 75008 Paris France
+20717,2,"Angle, Mr. William A",male,34.0,1,0,226875,26.0,"",S,386 Pacific St
+15690,3,"Conlon, Mr. Thomas Henry",male,31.0,0,0,21332,7.7333,"",Q,Via Santa Sofia 10 Milan City Center 20122 Milan Italy
+4925,3,"Buckley, Mr. Daniel",male,21.0,0,0,330920,7.8208,"",Q,Piazza Luigi di Savoia 20 Central Station 20124 Milan Italy
+9016,1,"McCaffry, Mr. Thomas Francis",male,46.0,0,0,13050,75.2417,C6,C,209 211 rue de Charenton 12th arr 75012 Paris France
+2260,1,"Chaudanson, Miss. Victorine",female,36.0,0,0,PC 17608,262.375,B61,C,1071 E El Camino Real
+6318,2,"Angle, Mr. William A",male,34.0,1,0,226875,26.0,"",S,Via dell Orso 7 Milan City Center 20121 Milan Italy
+10212,3,"Lundin, Miss. Olga Elida",female,23.0,0,0,347469,7.8542,"",S,12340 I 10 Service Rd
+19480,2,"Wells, Mrs. Arthur Henry (Addie Dart Trevaskis)",female,29.0,0,2,29103,23.0,"",S,2278 Highway 63
+12701,1,"Brady, Mr. John Bertram",male,41.0,0,0,113054,30.5,A21,S,22 28 Broadway Westminster Borough London SW1H 0BH United Kingdom
+19311,3,"Guest, Mr. Robert",male,"",0,0,376563,8.05,"",S,1101 N 3rd St
+12702,3,"Samaan, Mr. Elias",male,"",2,0,2662,21.6792,"",C,5 Olympic Way Wembley Brent London HA9 0NP United Kingdom
+16878,2,"Ware, Mr. John James",male,30.0,1,0,CA 31352,21.0,"",S,7653 N Owasso Expy
+2367,1,"Brandeis, Mr. Emil",male,48.0,0,0,PC 17591,50.4958,B10,C,Via Cimarosa 6 Fiera Milano City 20144 Milan Italy
+2500,3,"Johansson, Mr. Nils",male,29.0,0,0,347467,7.8542,"",S,46 Blackfriars Road Southwark London SE1 8NZ United Kingdom
+19266,1,"Bucknell, Mrs. William Robert (Emma Eliza Ward)",female,60.0,0,0,11813,76.2917,D15,C,35 Via Pico Plz
+4910,3,"Pedersen, Mr. Olaf",male,"",0,0,345498,7.775,"",S,614 S W 11th Ave
+17950,1,"Franklin, Mr. Thomas Parham",male,"",0,0,113778,26.55,D34,S,14 Rue Beaujon 8th arr 75008 Paris France
+10293,2,"Hiltunen, Miss. Marta",female,18.0,1,1,250650,13.0,"",S,1725 Long Beach Blvd
+6320,3,"van Billiard, Master. Walter John",male,11.5,1,1,A/5. 851,14.5,"",S,143 Highway 65 S
+2533,3,"Thomas, Mr. Tannous",male,"",0,0,2684,7.225,"",C,Jan Luijkenstraat 76 Oud Zuid 1071 CT Amsterdam Netherlands
+19459,2,"Christy, Mrs. (Alice Frances)",female,45.0,0,2,237789,30.0,"",S,214 High Street Acton London London W3 9NX United Kingdom
+16832,3,"Wiklund, Mr. Karl Johan",male,21.0,1,0,3101266,6.4958,"",S,Filmteichstra e 5 10 Favoriten 1100 Vienna Austria
+16954,3,"Dean, Miss. Elizabeth Gladys Millvina",female,0.17,1,2,C.A. 2315,20.575,"",S,Stadhouderskade 12 Oud West 1054 ES Amsterdam Netherlands
+18243,3,"Cor, Mr. Ivan",male,27.0,0,0,349229,7.8958,"",S,17 rue g t le coeur 6th arr 75006 Paris France
+3546,3,"Roth, Miss. Sarah A",female,"",0,0,342712,8.05,"",S,2 Sylvester Path Hackney London E8 1EN United Kingdom
+15417,3,"Brobeck, Mr. Karl Rudolf",male,22.0,0,0,350045,7.7958,"",S,581 S Prom
+19270,2,"Hocking, Miss. Ellen Nellie",female,20.0,2,1,29105,23.0,"",S,Avenida Diagonal 205 Sant Mart 08018 Barcelona Spain
+9134,3,"Canavan, Mr. Patrick",male,21.0,0,0,364858,7.75,"",Q,Gro e Stadtgutgasse 31 02 Leopoldstadt 1020 Vienna Austria
+12976,3,"Pokrnic, Mr. Tome",male,24.0,0,0,315092,8.6625,"",S,942 Main St
+19277,1,"Chaudanson, Miss. Victorine",female,36.0,0,0,PC 17608,262.375,B61,C,3 Rue Verniquet 17th arr 75017 Paris France
+9043,3,"Samaan, Mr. Hanna",male,"",2,0,2662,21.6792,"",C,Highway 89 91
+15320,3,"Samaan, Mr. Elias",male,"",2,0,2662,21.6792,"",C,1200 N Shartel Ave
+4934,3,"Chronopoulos, Mr. Demetrios",male,18.0,1,0,2680,14.4542,"",C,Calabria 115 117 Eixample 08015 Barcelona Spain
+12707,1,"Mock, Mr. Philipp Edmund",male,30.0,1,0,13236,57.75,C78,C,503 Spearfish Canyon Rd
+19528,3,"Cacic, Mr. Jego Grga",male,18.0,0,0,315091,8.6625,"",S,13 15 Gower Street Camden London WC1E 6HE United Kingdom
+19456,2,"Hiltunen, Miss. Marta",female,18.0,1,1,250650,13.0,"",S,4350 S W 8th St
+9158,3,"Henriksson, Miss. Jenny Lovisa",female,28.0,0,0,347086,7.775,"",S,221 E Byers Ave
+15310,3,"Assaf Khalil, Mrs. Mariana (Miriam)",female,45.0,0,0,2696,7.225,"",C,616 Highway 70
