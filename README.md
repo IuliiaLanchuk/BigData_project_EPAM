@@ -6,10 +6,6 @@ Cats VS Dogs
 ------------
 Author: **Andrei Gavrilov** <andrei_gavrilov@epam.com>
 
-Titanic's victims
------------------
-Author: **Mikhail Poltoratskii** <mikhail_poltoratskii@epam.com>
-
 Weather analysis
 ----------------
 Author: **Renat Batraev** <renat_batraev@epam.com>
