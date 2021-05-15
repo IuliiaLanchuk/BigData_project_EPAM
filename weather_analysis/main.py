@@ -1,9 +1,11 @@
 import os
 import re
 import zipfile
+
 from pathlib import Path
 
 import click
+
 import pandas as pd
 
 
@@ -42,8 +44,13 @@ def main():
     archive.close()
     csv_files = (file_info.filename for file_info in archive.infolist())
     all_data = (data_preparing(csv_file) for csv_file in csv_files)
-    data_group_by_country_city = pd.concat(all_data).groupby(['Country', 'City']).size()
-    print(data_group_by_country_city)
+
+    data_concat = pd.concat(all_data)
+    data_concat_size = data_concat.groupby(['Country', 'City']).size().to_frame('Size').reset_index()
+    get_rid_duplicates = data_concat_size.drop_duplicates(['Country', 'Size'])
+    data_concat_size_max = get_rid_duplicates.sort_values('Size', ascending=False).drop_duplicates(['Country'])
+    print(data_concat_size_max)
+    # print(data_concat_size_max["City"])
 
 
 if __name__ == "__main__":
