@@ -21,16 +21,14 @@ def validate_latitude_longitude(frame):
     lat = 'Latitude'
     frame = frame[frame[lat].apply(regex_filter, parameter=lat)]
     filtered_frame = frame[frame[long].apply(regex_filter, parameter=long)]
-    print(filtered_frame)
     return filtered_frame
 
 
 def data_preparing(filename):
     file_data = pd.read_csv(filename, delimiter=',', verbose=True, encoding="utf-8", index_col='Id')
-    print(file_data)
     frame = file_data.dropna()
     filtered_frame = validate_latitude_longitude(frame)
-    # print(filtered_frame.groupby(['Country', 'City']).size())
+    return filtered_frame
 
 
 @click.command()
@@ -42,10 +40,10 @@ def main():
     archive.extractall('.')
     print('ZIP Extracted.')
     archive.close()
-    for file_info in archive.infolist():
-        print('filename:', file_info.filename, ', creation data:', file_info.date_time, ', file size:',
-              file_info.file_size)
-        data_preparing(file_info.filename)
+    csv_files = (file_info.filename for file_info in archive.infolist())
+    all_data = (data_preparing(csv_file) for csv_file in csv_files)
+    data_group_by_country_city = pd.concat(all_data).groupby(['Country', 'City']).size()
+    print(data_group_by_country_city)
 
 
 if __name__ == "__main__":
