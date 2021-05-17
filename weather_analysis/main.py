@@ -3,6 +3,7 @@ import re
 import zipfile
 from concurrent.futures.thread import ThreadPoolExecutor
 from pathlib import Path
+
 import click
 import pandas as pd
 from pandas import DataFrame
@@ -37,12 +38,22 @@ def multithreading_row_enrichment_with_address(data_select_cities: DataFrame, th
     geocoder = GoogleGeocoder(os.environ.get("API_KEY"))
 
     with ThreadPoolExecutor(max_workers=threads_amount) as pool:
-        data_select_cities['Address'] = data_select_cities.apply(lambda row: (row["Latitude"], row["Longitude"]), axis=1) \
+        data_select_cities['Address'] = data_select_cities.apply(lambda row: (row["Latitude"], row["Longitude"]),
+                                                                 axis=1) \
             .apply(lambda coordinates: pool.submit(geocoder.get, coordinates)) \
             .apply(lambda future_result: future_result.result()[0])
 
         data_select_cities.to_csv('data_with_address_enrich.csv', index=True, header=True)
         return data_select_cities
+
+
+def get_city_center_coordinates(data: pd.DataFrame) -> pd.DataFrame:
+    lat_max = data["Latitude"].max().sort_index()
+    long_max = data["Longitude"].max().sort_index()
+    lat_min = data["Latitude"].min().sort_index()
+    long_min = data["Longitude"].min().sort_index()
+    data = {'Center_latitude': ((lat_min + lat_max) / 2).values, 'Center_longitude': ((long_min + long_max) / 2).values}
+    return DataFrame(data)
 
 
 @click.command()
@@ -68,7 +79,11 @@ def main():
 
     data_enriched_with_address = multithreading_row_enrichment_with_address(data_select_cities, 50)
     # data_enriched_with_address = pd.read_csv('data_with_address_enrich.csv')
-    print(data_enriched_with_address)
+
+    data_select_cities['Latitude'] = data_select_cities['Latitude'].apply(lambda lat: float(lat))
+    data_select_cities['Longitude'] = data_select_cities['Longitude'].apply(lambda lat: float(lat))
+    center_coords = get_city_center_coordinates(data_select_cities.groupby(["City"]))
+    print(center_coords)
 
 
 if __name__ == "__main__":
