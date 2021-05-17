@@ -1,12 +1,12 @@
 import os
 import re
 import zipfile
-
+from concurrent.futures.thread import ThreadPoolExecutor
 from pathlib import Path
-
 import click
-
 import pandas as pd
+from pandas import DataFrame
+from googlegeocoder import GoogleGeocoder
 
 
 def regex_filter(value, parameter) -> bool:
@@ -33,6 +33,18 @@ def data_preparing(filename):
     return filtered_frame
 
 
+def multithreading_row_enrichment_with_address(data_select_cities: DataFrame, threads_amount: int):
+    geocoder = GoogleGeocoder(os.environ.get("API_KEY"))
+
+    with ThreadPoolExecutor(max_workers=threads_amount) as pool:
+        data_select_cities['Address'] = data_select_cities.apply(lambda row: (row["Latitude"], row["Longitude"]), axis=1) \
+            .apply(lambda coordinates: pool.submit(geocoder.get, coordinates)) \
+            .apply(lambda future_result: future_result.result()[0])
+
+        data_select_cities.to_csv('data_with_address_enrich.csv', index=True, header=True)
+        return data_select_cities
+
+
 @click.command()
 def main():
     print('Extracting ZIP.')
@@ -46,11 +58,17 @@ def main():
     all_data = (data_preparing(csv_file) for csv_file in csv_files)
 
     data_concat = pd.concat(all_data)
+
     data_concat_size = data_concat.groupby(['Country', 'City']).size().to_frame('Size').reset_index()
     get_rid_duplicates = data_concat_size.drop_duplicates(['Country', 'Size'])
     data_concat_size_max = get_rid_duplicates.sort_values('Size', ascending=False).drop_duplicates(['Country'])
-    print(data_concat_size_max)
-    # print(data_concat_size_max["City"])
+
+    top_cities_with_max_hotels = data_concat_size_max["City"].values
+    data_select_cities = data_concat.loc[data_concat['City'].isin(top_cities_with_max_hotels)]
+
+    data_enriched_with_address = multithreading_row_enrichment_with_address(data_select_cities, 50)
+    # data_enriched_with_address = pd.read_csv('data_with_address_enrich.csv')
+    print(data_enriched_with_address)
 
 
 if __name__ == "__main__":
