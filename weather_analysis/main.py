@@ -3,8 +3,9 @@ import os
 import re
 import zipfile
 from concurrent.futures.thread import ThreadPoolExecutor
-from datetime import timedelta, date
+from datetime import datetime, timedelta
 from pathlib import Path
+import matplotlib.pyplot as plt
 
 import click
 import pandas as pd
@@ -54,7 +55,8 @@ def get_city_center_coordinates(data: pd.DataFrame) -> pd.DataFrame:
     long_max = data["Longitude"].max().sort_index()
     lat_min = data["Latitude"].min().sort_index()
     long_min = data["Longitude"].min().sort_index()
-    data = {'Latitude': ((lat_min + lat_max) / 2).values, 'Longitude': ((long_min + long_max) / 2).values}
+    data = {'Latitude': ((lat_min + lat_max) / 2).values, 'Longitude': ((long_min + long_max) / 2).values,
+            "Country": (i[1].values[0] for i in data['Country'])}
     return DataFrame(data)
 
 
@@ -71,7 +73,6 @@ def get_weather_for_previous_5_days_today_and_next_5_days(center_woeids, today) 
             result['temp_min, C'].append(response["min_temp"])
             result['temp_max, C'].append(response['max_temp'])
             result['day'].append(response["applicable_date"])
-    DataFrame(result).to_csv('weather_11days.csv', index=True, header=True)
     return DataFrame(result)
 
 
@@ -110,7 +111,7 @@ def main():
     top_cities_with_max_hotels = data_concat_size_max["City"].values
     data_select_cities = data_concat.loc[data_concat['City'].isin(top_cities_with_max_hotels)]
 
-    data_enriched_with_address = multithreading_row_enrichment_with_address(data_select_cities, 50)
+    # data_enriched_with_address = multithreading_row_enrichment_with_address(data_select_cities.iloc[:3], 50)
     # data_enriched_with_address = pd.read_csv('data_with_address_enrich.csv')
     # print(data_enriched_with_address)
 
@@ -118,12 +119,44 @@ def main():
     data_select_cities['Longitude'] = data_select_cities['Longitude'].apply(lambda lat: float(lat))
     center_coords = get_city_center_coordinates(data_select_cities.groupby(["City"]))
 
-    all_centres_woeids = get_all_centers_ids(
-        center_coords.apply(lambda row: (row["Latitude"], row["Longitude"]), axis=1))
-    df_center_coords_ids = pd.concat([center_coords, all_centres_woeids], axis=1)
-    weather = get_weather_for_previous_5_days_today_and_next_5_days(all_centres_woeids['Woeid'].values, date.today())
-    df_city_weather = df_center_coords_ids.merge(weather, on=["Woeid"])
-    print(df_city_weather)
+    # all_centres_woeids = get_all_centers_ids(
+    #     center_coords.apply(lambda row: (row["Latitude"], row["Longitude"]), axis=1))
+    # df_center_coords_ids = pd.concat([center_coords, all_centres_woeids], axis=1)
+    # weather = get_weather_for_previous_5_days_today_and_next_5_days(all_centres_woeids['Woeid'].values, date.today())
+    # df_city_weather = df_center_coords_ids.merge(weather, on=["Woeid"])
+    # df = df_city_weather.to_csv('weather_11days.csv', index=True, header=True)
+    df_new = pd.read_csv('weather_11days.csv')
+    # print(df_new)
+    plots_creation(df_new)
+
+
+def plot_save(plt, country, city) -> None:
+    plot_path = Path(f"output_data/{country}/{city}")
+    plot_path.mkdir(exist_ok=True, parents=True)
+    plt.savefig(fname=plot_path / f"min_max_temperature dependence in {city}.png", dpi=150)
+    print(f"File 'min_max_temperature dependence in {city}.png' was created.")
+    plt.close()
+
+
+def plots_creation(df: pd.DataFrame) -> None:
+    i = 0
+    while i < len(df) - 10:
+        data = df.loc[i:i + 10]
+        x_axis = data['day'].values
+        y_axis_min = data['temp_min, C'].values
+        y_axis_max = data['temp_max, C'].values
+        plt.plot(x_axis, y_axis_min, color='red', label='min', linestyle='-.')
+        plt.plot(x_axis, y_axis_max, color='blue', label='max', linestyle='-.')
+        plt.xticks(fontsize=5)
+        plt.yticks(fontsize=8)
+        plt.xlabel('Day')
+        plt.ylabel('Temperature, C')
+        city = data['City'].values[0]
+        country = data['Country'].values[0]
+        plt.title(f'Minimum and maximum temperature dependence in {city}, {country}')
+        plt.legend(loc='upper left', fontsize=8)
+        plot_save(plt, country, city)
+        i += 11
 
 
 if __name__ == "__main__":
