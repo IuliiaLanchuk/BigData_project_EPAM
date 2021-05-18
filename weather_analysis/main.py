@@ -1,13 +1,16 @@
+import json
 import os
 import re
 import zipfile
 from concurrent.futures.thread import ThreadPoolExecutor
+from datetime import timedelta, date
 from pathlib import Path
 
 import click
 import pandas as pd
 from pandas import DataFrame
 from googlegeocoder import GoogleGeocoder
+import requests
 
 
 def regex_filter(value, parameter) -> bool:
@@ -34,17 +37,16 @@ def data_preparing(filename):
     return filtered_frame
 
 
-def multithreading_row_enrichment_with_address(data_select_cities: DataFrame, threads_amount: int):
+def multithreading_row_enrichment_with_address(df: DataFrame, threads_amount: int) -> DataFrame:
     geocoder = GoogleGeocoder(os.environ.get("API_KEY"))
 
     with ThreadPoolExecutor(max_workers=threads_amount) as pool:
-        data_select_cities['Address'] = data_select_cities.apply(lambda row: (row["Latitude"], row["Longitude"]),
-                                                                 axis=1) \
+        df['Address'] = df.apply(lambda row: (row["Latitude"], row["Longitude"]), axis=1) \
             .apply(lambda coordinates: pool.submit(geocoder.get, coordinates)) \
             .apply(lambda future_result: future_result.result()[0])
 
-        data_select_cities.to_csv('data_with_address_enrich.csv', index=True, header=True)
-        return data_select_cities
+        # df.to_csv('data_with_address_enrich.csv', index=True, header=True)
+        return df
 
 
 def get_city_center_coordinates(data: pd.DataFrame) -> pd.DataFrame:
@@ -52,7 +54,38 @@ def get_city_center_coordinates(data: pd.DataFrame) -> pd.DataFrame:
     long_max = data["Longitude"].max().sort_index()
     lat_min = data["Latitude"].min().sort_index()
     long_min = data["Longitude"].min().sort_index()
-    data = {'Center_latitude': ((lat_min + lat_max) / 2).values, 'Center_longitude': ((long_min + long_max) / 2).values}
+    data = {'Latitude': ((lat_min + lat_max) / 2).values, 'Longitude': ((long_min + long_max) / 2).values}
+    return DataFrame(data)
+
+
+def get_weather_for_previous_5_days_today_and_next_5_days(center_woeids, today) -> pd.DataFrame:
+    date_range = pd.date_range((today - timedelta(days=5)), (today + timedelta(days=5))).strftime("%Y/%m/%d")
+    base_url = 'https://www.metaweather.com/api/location/'
+    urls = [f'{base_url}{woeid}/{date}/' for woeid in center_woeids for date in date_range]
+    result = {'Woeid': [id_ for id_ in center_woeids for i in range(11)], 'temp_min, C': [], 'temp_max, C': [],
+              'day': []}
+    for url in urls:
+        res = requests.get(url)
+        if res.status_code == 200:
+            response = res.json()[0]
+            result['temp_min, C'].append(response["min_temp"])
+            result['temp_max, C'].append(response['max_temp'])
+            result['day'].append(response["applicable_date"])
+    DataFrame(result).to_csv('weather_11days.csv', index=True, header=True)
+    return DataFrame(result)
+
+
+def get_all_centers_ids(lat_long) -> pd.DataFrame:
+    urls = [f'https://www.metaweather.com//api/location/search/?lattlong={i[0]},{i[1]}' for i in lat_long.values]
+    woeids = []
+    cities = []
+    for url in urls:
+        req = requests.get(url)
+        if req.status_code == 200:
+            responce = req.json()[0]
+            woeids.append(responce["woeid"])
+            cities.append(responce["title"])
+    data = {'City': cities, 'Woeid': woeids}
     return DataFrame(data)
 
 
@@ -79,11 +112,18 @@ def main():
 
     data_enriched_with_address = multithreading_row_enrichment_with_address(data_select_cities, 50)
     # data_enriched_with_address = pd.read_csv('data_with_address_enrich.csv')
+    # print(data_enriched_with_address)
 
     data_select_cities['Latitude'] = data_select_cities['Latitude'].apply(lambda lat: float(lat))
     data_select_cities['Longitude'] = data_select_cities['Longitude'].apply(lambda lat: float(lat))
     center_coords = get_city_center_coordinates(data_select_cities.groupby(["City"]))
-    print(center_coords)
+
+    all_centres_woeids = get_all_centers_ids(
+        center_coords.apply(lambda row: (row["Latitude"], row["Longitude"]), axis=1))
+    df_center_coords_ids = pd.concat([center_coords, all_centres_woeids], axis=1)
+    weather = get_weather_for_previous_5_days_today_and_next_5_days(all_centres_woeids['Woeid'].values, date.today())
+    df_city_weather = df_center_coords_ids.merge(weather, on=["Woeid"])
+    print(df_city_weather)
 
 
 if __name__ == "__main__":
