@@ -13,6 +13,8 @@ from pandas import DataFrame
 from googlegeocoder import GoogleGeocoder
 import requests
 
+DAYS_AMOUNT = 11
+
 
 def regex_filter(value, parameter) -> bool:
     regexp = ''
@@ -112,9 +114,8 @@ def plot_save(plt, country, city) -> None:
 
 
 def plots_creation(df: pd.DataFrame) -> None:
-    i = 0
-    while i < len(df) - 10:
-        data = df.loc[i:i + 10]
+    for i in range(0, len(df) - DAYS_AMOUNT + 1, DAYS_AMOUNT):
+        data = df.loc[i:i + DAYS_AMOUNT - 1]
         x_axis = data['day'].values
         y_axis_min = data['temp_min, C'].values
         y_axis_max = data['temp_max, C'].values
@@ -129,7 +130,6 @@ def plots_creation(df: pd.DataFrame) -> None:
         plt.title(f'Minimum and maximum temperature dependence in {city}, {country}')
         plt.legend(loc='upper left', fontsize=8)
         plot_save(plt, country, city)
-        i += 11
 
 
 def get_top_cities_with_max_hotels(data_frame: pd.DataFrame):
@@ -143,13 +143,36 @@ def get_top_cities_with_max_hotels(data_frame: pd.DataFrame):
     return data_select_cities
 
 
+def find_max_or_min_temp_city_and_day(df: pd.DataFrame, sort_key: str, ascending: bool, criteria: str) -> str:
+    row = df.sort_values(sort_key, ascending=ascending).reset_index().loc[0]
+    return "{criteria} temperature is in {city} on {day}".format(criteria=criteria, city=row['City'], day=row['day'])
+
+
+def get_city_day_with_max_min_temp_change(base_df: pd.DataFrame) -> str:
+    base_df['temp_change'] = base_df['temp_max, C'].values - base_df['temp_min, C'].values
+    df = base_df.groupby(['City', 'temp_change', 'day']).size().to_frame('size').reset_index().drop_duplicates(
+        subset="City", keep='last')
+    row = df.sort_values('temp_change', ascending=False).reset_index().loc[0]
+    return "{city} shows maximum difference between the maximum and minimum temperature on {day}".format(
+        city=row['City'], day=row['day'])
+
+
+def get_city_with_max_temp_max_change(base_df: pd.DataFrame) -> str:
+    df = base_df.sort_values('temp_max, C').groupby(['City', 'temp_max, C']).size().to_frame('size').reset_index()
+    df_min_temp = df.drop_duplicates(subset="City", keep='first')
+    df_max_temp = df.drop_duplicates(subset="City", keep='last')
+    df_min_temp['temp_change'] = df_max_temp['temp_max, C'].values - df_min_temp['temp_max, C'].values
+    city = df_min_temp['City'][df_min_temp['temp_change'].values == df_min_temp['temp_change'].values.max()].values[0]
+    return "{city} is the city with maximum change of maximal temperature during 11 days".format(city=city)
+
+
 @click.command()
 def main():
     data_frame = extracting_csv_files()
     data_select_cities = get_top_cities_with_max_hotels(data_frame)
 
-    # data_enriched_with_address = multithreading_row_enrichment_with_address(data_select_cities.iloc[:3], 50)
-    # data_enriched_with_address = pd.read_csv('data_with_address_enrich.csv')
+    data_enriched_with_address = multithreading_row_enrichment_with_address(data_select_cities.iloc[:3], 50)
+    data_enriched_with_address = pd.read_csv('data_with_address_enrich.csv')
 
     center_coords = get_city_center_coordinates(data_select_cities.groupby(["City"]))
     all_centres_ids = get_all_centers_ids(
@@ -162,6 +185,13 @@ def main():
     weather_to_csv = df_weather_and_coord_ids.to_csv('weather_11days.csv', index=True, header=True)
     weather = pd.read_csv('weather_11days.csv')
     plots_creation(weather)
+
+    day_city_with_max_temp = find_max_or_min_temp_city_and_day(weather, sort_key='temp_max, C', ascending=False,
+                                                               criteria='Maximal')
+    day_city_with_min_temp = find_max_or_min_temp_city_and_day(weather, sort_key='temp_min, C', ascending=True,
+                                                               criteria='Minimal')
+    city_with_max_temp_change = get_city_with_max_temp_max_change(weather)
+    city_day_with_max_min_temp_change = get_city_day_with_max_min_temp_change(weather)
 
 
 if __name__ == "__main__":
