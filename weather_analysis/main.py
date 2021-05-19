@@ -49,6 +49,7 @@ def multithreading_row_enrichment_with_address(df: DataFrame, threads_amount: in
             .apply(lambda future_result: future_result.result()[0])
 
         # df.to_csv('data_with_address_enrich.csv', index=True, header=True)
+        hotels_city_data_split_by_100_before_save(df)
         return df
 
 
@@ -166,12 +167,38 @@ def get_city_with_max_temp_max_change(base_df: pd.DataFrame) -> str:
     return "{city} is the city with maximum change of maximal temperature during 11 days".format(city=city)
 
 
+def hotels_city_data_split_by_100_before_save(df: pd.DataFrame) -> None:
+    top_cities = df['City'].drop_duplicates().values
+    for city in top_cities:
+        frame = df.loc[df['City'].values == city]
+        counter = 1
+        i = 0
+        while i != len(frame):
+            rest_df = frame.iloc[i:len(frame)]
+            if len(rest_df) < 100:
+                save_hotels_info_in_csv(rest_df, city, counter)
+                i += len(rest_df)
+            else:
+                df_100_elements = frame.iloc[i:i + 99]
+                save_hotels_info_in_csv(df_100_elements, city, counter)
+                counter += 1
+                i += 100
+
+
+def save_hotels_info_in_csv(df, city, counter):
+    country = df['Country'].values[0]
+    file_path = Path(f"output_data/{country}/{city}")
+    file_path.mkdir(exist_ok=True, parents=True)
+    df.to_csv(path_or_buf=file_path / f"{city}_hotels_info_{counter}.csv", index=False, header=True, sep=',')
+    print(f"Data for hotels in {city}, {country} was saved in file '{city}_hotels_info_{counter}.csv'")
+
+
 @click.command()
 def main():
     data_frame = extracting_csv_files()
     data_select_cities = get_top_cities_with_max_hotels(data_frame)
 
-    data_enriched_with_address = multithreading_row_enrichment_with_address(data_select_cities.iloc[:3], 50)
+    # data_enriched_with_address = multithreading_row_enrichment_with_address(data_select_cities.iloc[:3], 50)
     data_enriched_with_address = pd.read_csv('data_with_address_enrich.csv')
 
     center_coords = get_city_center_coordinates(data_select_cities.groupby(["City"]))
