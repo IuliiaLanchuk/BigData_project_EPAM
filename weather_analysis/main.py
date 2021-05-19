@@ -3,7 +3,7 @@ import os
 import re
 import zipfile
 from concurrent.futures.thread import ThreadPoolExecutor
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 from pathlib import Path
 import matplotlib.pyplot as plt
 
@@ -90,8 +90,7 @@ def get_all_centers_ids(lat_long) -> pd.DataFrame:
     return DataFrame(data)
 
 
-@click.command()
-def main():
+def extracting_csv_files() -> pd.DataFrame:
     print('Extracting ZIP.')
     dir_path = Path(os.path.dirname(__file__))
     file_path = dir_path / 'data/hotels.zip'
@@ -101,33 +100,7 @@ def main():
     archive.close()
     csv_files = (file_info.filename for file_info in archive.infolist())
     all_data = (data_preparing(csv_file) for csv_file in csv_files)
-
-    data_concat = pd.concat(all_data)
-
-    data_concat_size = data_concat.groupby(['Country', 'City']).size().to_frame('Size').reset_index()
-    get_rid_duplicates = data_concat_size.drop_duplicates(['Country', 'Size'])
-    data_concat_size_max = get_rid_duplicates.sort_values('Size', ascending=False).drop_duplicates(['Country'])
-
-    top_cities_with_max_hotels = data_concat_size_max["City"].values
-    data_select_cities = data_concat.loc[data_concat['City'].isin(top_cities_with_max_hotels)]
-
-    # data_enriched_with_address = multithreading_row_enrichment_with_address(data_select_cities.iloc[:3], 50)
-    # data_enriched_with_address = pd.read_csv('data_with_address_enrich.csv')
-    # print(data_enriched_with_address)
-
-    data_select_cities['Latitude'] = data_select_cities['Latitude'].apply(lambda lat: float(lat))
-    data_select_cities['Longitude'] = data_select_cities['Longitude'].apply(lambda lat: float(lat))
-    center_coords = get_city_center_coordinates(data_select_cities.groupby(["City"]))
-
-    # all_centres_woeids = get_all_centers_ids(
-    #     center_coords.apply(lambda row: (row["Latitude"], row["Longitude"]), axis=1))
-    # df_center_coords_ids = pd.concat([center_coords, all_centres_woeids], axis=1)
-    # weather = get_weather_for_previous_5_days_today_and_next_5_days(all_centres_woeids['Woeid'].values, date.today())
-    # df_city_weather = df_center_coords_ids.merge(weather, on=["Woeid"])
-    # df = df_city_weather.to_csv('weather_11days.csv', index=True, header=True)
-    df_new = pd.read_csv('weather_11days.csv')
-    # print(df_new)
-    plots_creation(df_new)
+    return pd.concat(all_data)
 
 
 def plot_save(plt, country, city) -> None:
@@ -157,6 +130,38 @@ def plots_creation(df: pd.DataFrame) -> None:
         plt.legend(loc='upper left', fontsize=8)
         plot_save(plt, country, city)
         i += 11
+
+
+def get_top_cities_with_max_hotels(data_frame: pd.DataFrame):
+    df_grouped = data_frame.groupby(['Country', 'City']).size().to_frame('Size').reset_index().drop_duplicates(
+        ['Country', 'Size'])
+    top_cities_with_max_hotels_df = df_grouped.sort_values('Size', ascending=False).drop_duplicates(['Country'])
+    data_select_cities = data_frame.loc[data_frame['City'].isin(top_cities_with_max_hotels_df["City"].values)]
+
+    data_select_cities['Latitude'] = data_select_cities['Latitude'].apply(lambda lat: float(lat))
+    data_select_cities['Longitude'] = data_select_cities['Longitude'].apply(lambda lat: float(lat))
+    return data_select_cities
+
+
+@click.command()
+def main():
+    data_frame = extracting_csv_files()
+    data_select_cities = get_top_cities_with_max_hotels(data_frame)
+
+    # data_enriched_with_address = multithreading_row_enrichment_with_address(data_select_cities.iloc[:3], 50)
+    # data_enriched_with_address = pd.read_csv('data_with_address_enrich.csv')
+
+    center_coords = get_city_center_coordinates(data_select_cities.groupby(["City"]))
+    all_centres_ids = get_all_centers_ids(
+        center_coords.apply(lambda row: (row["Latitude"], row["Longitude"]), axis=1))
+    weather_all_cities_11_days = get_weather_for_previous_5_days_today_and_next_5_days(all_centres_ids['Woeid'].values,
+                                                                                       date.today())
+
+    df_center_coords_and_ids = pd.concat([center_coords, all_centres_ids], axis=1)
+    df_weather_and_coord_ids = df_center_coords_and_ids.merge(weather_all_cities_11_days, on=["Woeid"])
+    weather_to_csv = df_weather_and_coord_ids.to_csv('weather_11days.csv', index=True, header=True)
+    weather = pd.read_csv('weather_11days.csv')
+    plots_creation(weather)
 
 
 if __name__ == "__main__":
