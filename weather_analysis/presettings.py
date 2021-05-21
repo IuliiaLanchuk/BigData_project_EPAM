@@ -5,14 +5,14 @@ from typing import Any
 import pandas as pd
 
 
-def get_extracted_grouped_data(path_to_data: str) -> pd.DataFrame:
+def get_extracted_grouped_data(input_folder: str) -> pd.DataFrame:
     """
     Extract csv files from zip archive and concatenate grouped data from files to one dataframe.
-    :param path_to_data: Path to archive with files.
+    :param input_folder: Path to archive with files.
     :return: Pandas dataframe with data about cities which have maximum hotels.
     """
     print('Extracting ZIP.')
-    archive = zipfile.ZipFile(path_to_data, 'r')
+    archive = zipfile.ZipFile(input_folder, 'r')
     archive.extractall('.')
     print('ZIP Extracted.')
     archive.close()
@@ -21,7 +21,7 @@ def get_extracted_grouped_data(path_to_data: str) -> pd.DataFrame:
     return get_top_cities_with_max_hotels(pd.concat(all_data))
 
 
-def data_cleaning_from_invalid(file_path) -> pd.DataFrame:
+def data_cleaning_from_invalid(file_path: str) -> pd.DataFrame:
     """
     Getting rip from null values and invalid data from file and return filtered dataframe.
     :param file_path: Path to file.
@@ -41,8 +41,10 @@ def validate_latitude_longitude(df: pd.DataFrame) -> pd.DataFrame:
     lat = 'Latitude'
     df_valid_lat = df[df[lat].apply(regex_filter, parameter=lat)]
     df_valid_lat_long = df_valid_lat[df_valid_lat[long].apply(regex_filter, parameter=long)]
-    float(df_valid_lat_long.loc[:, lat].values[0])
-    float(df_valid_lat_long.loc[:, long].values[0])
+    # df_valid_lat_long[lat] = float(df_valid_lat_long.loc[:, lat].values[0])
+    # df_valid_lat_long[long] = float(df_valid_lat_long.loc[:, long].values[0])
+    df_valid_lat_long['Latitude'] = df_valid_lat_long['Latitude'].apply(lambda lat: float(lat))
+    df_valid_lat_long['Longitude'] = df_valid_lat_long['Longitude'].apply(lambda long: float(long))
     return df_valid_lat_long
 
 
