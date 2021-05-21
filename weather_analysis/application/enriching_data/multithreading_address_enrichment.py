@@ -7,7 +7,7 @@ from googlegeocoder import GoogleGeocoder
 from pandas import DataFrame
 
 
-def multithreading_data_enrichment_with_address(output_folder: str, df: DataFrame, n_threads: int) -> pd.DataFrame:
+def multithreading_data_enrichment_with_address(output_folder: str, df: DataFrame, n_threads: int) -> None:
     """
     Do hotels data enrichment with address in terms of concurrency.
     :param output_folder: Path to save data results.
@@ -21,8 +21,8 @@ def multithreading_data_enrichment_with_address(output_folder: str, df: DataFram
             .apply(lambda coordinates: pool.submit(geocoder.get, coordinates)) \
             .apply(lambda future_result: future_result.result()[0])
         print('Data about hotels addresses was collected.')
+
         hotels_city_data_split_by_100_before_save(output_folder, df)
-        return df
 
 
 def hotels_city_data_split_by_100_before_save(output_folder: str, df: pd.DataFrame) -> None:

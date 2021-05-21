@@ -1,6 +1,9 @@
+import os
+
 import pandas as pd
 
-from weather_analysis.presettings import data_cleaning_from_invalid, get_top_cities_with_max_hotels
+from weather_analysis.application.presettings.extract_and_validate import data_cleaning_from_invalid
+from weather_analysis.application.presettings.get_top_cities_data import get_top_cities_with_max_hotels
 
 invalid_data = {
     "Country": ["US", "FR", "US", "RU", "AT", "FR", "AT", 'FR'],
@@ -21,7 +24,7 @@ def test_data_cleaning_from_invalid():
 
 
 def test_get_top_cities_with_max_hotels():
-    df = pd.read_csv('hotels_example.csv')
+    df = pd.read_csv(os.path.dirname(__file__) + '/hotels_example.csv')
     top_cities_with_max_hotels = [i for i in get_top_cities_with_max_hotels(df).drop_duplicates('City', keep='first')[
         'City'].values]
     assert top_cities_with_max_hotels == ['NewYork', 'Moscow']

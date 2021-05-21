@@ -13,13 +13,13 @@ def get_extracted_grouped_data(input_folder: str) -> pd.DataFrame:
     """
     print('Extracting ZIP.')
     archive = zipfile.ZipFile(input_folder, 'r')
-    archive.extractall('.')
+    archive.extractall()
     print('ZIP Extracted.')
     archive.close()
-    csv_files = (file_info.filename for file_info in archive.infolist())
-    all_data = (data_cleaning_from_invalid(pd.read_csv(csv_file, sep=',', verbose=True, encoding="utf-8",
-                                                        index_col='Id')) for csv_file in csv_files)
-    return get_top_cities_with_max_hotels(pd.concat(all_data))
+    all_data = (data_cleaning_from_invalid(pd.read_csv(file_info.filename, sep=',', verbose=True, encoding="utf-8",
+                                                        index_col='Id')) for file_info in archive.infolist())
+
+    return pd.concat(all_data)
 
 
 def data_cleaning_from_invalid(df: pd.DataFrame) -> pd.DataFrame:
@@ -57,16 +57,3 @@ def regex_filter(value: Any, parameter: str) -> bool:
         else:
             return -limit_value <= float(value) <= limit_value
     return False
-
-
-def get_top_cities_with_max_hotels(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    According data grouped by country, city finds one city in every country with the biggest amount of hotels in it. Return
-    dataframe with full info about top cities, hotel parameters.
-    :param df: Pandas dataframe with data to group.
-    :return: Pandas dataframe with data.
-    """
-    df_grouped = df.groupby(['Country', 'City']).size().to_frame('Size').reset_index().drop_duplicates(
-        ['Country', 'Size'])
-    top_cities_with_max_hotels_df = df_grouped.sort_values('Size', ascending=False).drop_duplicates(['Country'])
-    return df.loc[df['City'].isin(top_cities_with_max_hotels_df["City"].values)]
