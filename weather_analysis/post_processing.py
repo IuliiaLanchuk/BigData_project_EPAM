@@ -58,7 +58,8 @@ def get_city_with_max_change_of_max_temp(base_df: pd.DataFrame) -> str:
     df_min_temp['temp_change'] = df_max_temp.loc[:, 'temp_max, C'].values - df_min_temp.loc[:, 'temp_max, C'].values
     city = df_min_temp['City'][df_min_temp['temp_change'].values == df_min_temp['temp_change'].values.max()].values[0]
     days = base_df['day'].drop_duplicates().values
-    return "{city} is the city with maximum change of maximal temperature during {day1} - {day11}".format(city=city,
-                                                                                                          day1=days[0],
-                                                                                                          day11=days[
-                                                                                                              -1])
+    return "{city} is the city with maximum change of maximal temperature during {day_first} - {day_last}".format(
+        city=city,
+        day_first=days[0],
+        day_last=days[
+            -1])

@@ -17,26 +17,18 @@ def get_extracted_grouped_data(input_folder: str) -> pd.DataFrame:
     print('ZIP Extracted.')
     archive.close()
     csv_files = (file_info.filename for file_info in archive.infolist())
-    all_data = (data_cleaning_from_invalid(csv_file) for csv_file in csv_files)
+    all_data = (data_cleaning_from_invalid(pd.read_csv(csv_file, sep=',', verbose=True, encoding="utf-8",
+                                                        index_col='Id')) for csv_file in csv_files)
     return get_top_cities_with_max_hotels(pd.concat(all_data))
 
 
-def data_cleaning_from_invalid(file_path: str) -> pd.DataFrame:
+def data_cleaning_from_invalid(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Getting rip from null values and invalid data from file and return filtered dataframe.
-    :param file_path: Path to file.
+    Getting rip from null values and invalid latitude and longitude values from file and return filtered dataframe.
+    :param df: Dataframe with nulls and invalid longitude and latitude values.
     :return: Pandas dataframe with filtered data.
     """
-    df = pd.read_csv(file_path, delimiter=',', verbose=True, encoding="utf-8", index_col='Id').dropna()
-    return validate_latitude_longitude(df)
-
-
-def validate_latitude_longitude(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Getting rip from invalid data from file and return filtered dataframe.
-    :param df: Dataframe with invalid longitude and latitude values.
-    :return: Pandas dataframe with correct data.
-    """
+    df = df.dropna()
     long = 'Longitude'
     lat = 'Latitude'
     df_valid_lat = df[df[lat].apply(regex_filter, parameter=lat)]
