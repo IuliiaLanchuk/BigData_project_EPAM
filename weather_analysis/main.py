@@ -1,8 +1,6 @@
-import asyncio
-
 import pandas as pd
 
-from get_weather_df import get_weather_forecast, plots_creation, save_center_info
+from get_weather_df import get_weather_forecast, plots_creation
 from multithreading_address_enrichment import multithreading_data_enrichment_with_address
 from post_processing import get_temperature_analysis
 from presettings import get_extracted_grouped_data
@@ -17,7 +15,7 @@ def main(input_folder: str, output_folder: str, n_threads: int) -> None:
     """
     df = get_extracted_grouped_data(input_folder)
 
-    data_enriched_with_address = multithreading_data_enrichment_with_address(output_folder, n_threads)
+    data_enriched_with_address = multithreading_data_enrichment_with_address(output_folder, df, n_threads)
     # data_enriched_with_address = pd.read_csv('data_with_address_enrich.csv')
 
     weather = get_weather_forecast(df, output_folder)
@@ -27,3 +25,5 @@ def main(input_folder: str, output_folder: str, n_threads: int) -> None:
 
     plots_creation(weather, output_folder)
     temperature_analysis = get_temperature_analysis(weather)
+
+

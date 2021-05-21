@@ -1,4 +1,4 @@
-from post_processing import get_city_day_with_max_or_min_temp, get_city_day_with_max_change_of_day_temp, \
+from weather_analysis.post_processing import get_city_day_with_max_or_min_temp, get_city_day_with_max_change_of_day_temp, \
     get_city_with_max_change_of_max_temp
 import pandas as pd
 

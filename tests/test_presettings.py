@@ -1,6 +1,6 @@
 import pandas as pd
 
-from presettings import data_cleaning_from_invalid, get_top_cities_with_max_hotels
+from weather_analysis.presettings import data_cleaning_from_invalid, get_top_cities_with_max_hotels
 
 invalid_data = {
     "Country": ["US", "FR", "US", "RU", "AT", "FR", "AT", 'FR'],
