@@ -12,7 +12,7 @@ def get_extracted_grouped_data(archive_path: str) -> pd.DataFrame:
     :param archive_path: Path to archive with files.
     :return: Pandas dataframe with data about cities which have maximum hotels.
     """
-    print('Extracting ZIP.')
+    print('Extracting ZIP...')
     dir_archive = os.path.dirname(archive_path)
     archive = zipfile.ZipFile(archive_path, 'r')
     archive.extractall(dir_archive)

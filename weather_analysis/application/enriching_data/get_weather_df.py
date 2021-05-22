@@ -16,6 +16,7 @@ def get_weather_forecast(df: pd.DataFrame, output_folder: str, n_threads: int) -
     Return dataFrame of weather parameters of center cities for period of 5 days before today, today and 5 days next.
     :param df: Pandas dataframe with data without weather info.
     :param output_folder: Path to save data results.
+    :param n_threads: Amount of threads.
     :return: Pandas dataframe with data with weather info.
     """
     center_coords = get_city_center_coordinates(df.groupby(["City"]))
@@ -60,19 +61,18 @@ def get_all_centers_ids(lat_long: pd.Series, n_threads: int) -> pd.DataFrame:
     """
     Return dataframe of center woeids and center city name.
     :param lat_long: Pandas Series object with latitude and longitude pair values.
+    :param n_threads: Amount of threads.
     :return: Pandas dataframe of woeids and city names.
     """
     urls = [f'https://www.metaweather.com//api/location/search/?lattlong={i[0]},{i[1]}' for i in lat_long.values]
-    woeids = []
-    cities = []
+    data = {'City': [], 'Woeid': []}
     with ThreadPoolExecutor(max_workers=n_threads) as pool:
         responses = pool.map(requests.get, urls)
     for req in responses:
         if req.status_code == 200:
-            responce = req.json()[0]
-            woeids.append(responce["woeid"])
-            cities.append(responce["title"])
-    data = {'City': cities, 'Woeid': woeids}
+            response = req.json()[0]
+            data['Woeid'].append(response["woeid"])
+            data['City'].append(response["title"])
     return DataFrame(data)
 
 
@@ -81,22 +81,23 @@ def get_weather_for_previous_5_days_today_and_next_5_days(center_woeids: List[in
     Return dataframe of weather parameters of center cities for peroid of 5 days before today, today and 5 days next.
     :param center_woeids: List of centers woeids values.
     :param today: Day today.
+    :param n_threads: Amount of threads.
     :return: Pandas dataframe of weather parameters of center cities.
     """
     date_range = pd.date_range((today - timedelta(days=5)), (today + timedelta(days=5))).strftime("%Y/%m/%d")
     base_url = 'https://www.metaweather.com/api/location/'
     urls = [f'{base_url}{woeid}/{date}/' for woeid in center_woeids for date in date_range]
-    result = {'Woeid': [id_ for id_ in center_woeids for i in range(11)], 'temp_min, C': [], 'temp_max, C': [],
+    collected_data = {'Woeid': [id_ for id_ in center_woeids for i in range(11)], 'temp_min, C': [], 'temp_max, C': [],
               'day': []}
     with ThreadPoolExecutor(max_workers=n_threads) as pool:
         responses = pool.map(requests.get, urls)
     for res in responses:
         if res.status_code == 200:
             response = res.json()[0]
-            result['temp_min, C'].append(response["min_temp"])
-            result['temp_max, C'].append(response['max_temp'])
-            result['day'].append(response["applicable_date"])
-    return DataFrame(result)
+            collected_data['temp_min, C'].append(response["min_temp"])
+            collected_data['temp_max, C'].append(response['max_temp'])
+            collected_data['day'].append(response["applicable_date"])
+    return DataFrame(collected_data)
 
 
 def plots_creation(df: pd.DataFrame, output_folder: str) -> None:
