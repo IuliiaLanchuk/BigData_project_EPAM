@@ -25,28 +25,19 @@ def multithreading_data_enrichment_with_address(output_folder: str, df: DataFram
         hotels_city_data_split_by_100_before_save(output_folder, df)
 
 
-def hotels_city_data_split_by_100_before_save(output_folder: str, df: pd.DataFrame) -> None:
+def hotels_city_data_split_by_100_before_save(output_folder: str, top_cities: pd.DataFrame) -> None:
     """
     Split data from csv files by 100 rows in each file and save data in output_folder.
     :param output_folder: Path to save data results.
-    :param df: Pandas dataframe with data.
+    :param top_cities: Pandas dataframe with full data of top_cities.
     :return: None.
     """
-    top_cities = df['City'].drop_duplicates().values
-    for city in top_cities:
-        frame = df.loc[df['City'].values == city]
-        counter = 1
-        i = 0
-        while i != len(frame):
-            rest_df = frame.iloc[i:len(frame)]
-            if len(rest_df) < 100:
-                save_hotels_info_in_csv(output_folder, rest_df, city, counter)
-                i += len(rest_df)
-            else:
-                df_100_elements = frame.iloc[i:i + 99]
-                save_hotels_info_in_csv(output_folder, df_100_elements, city, counter)
-                counter += 1
-                i += 100
+    for city in top_cities['City'].drop_duplicates().values:
+        frame = top_cities.loc[top_cities['City'].values == city]
+        page_number = 1
+        for i in range(0, len(frame), 99):
+            save_hotels_info_in_csv(output_folder, frame.iloc[i:i+99], city, page_number)
+            page_number += 1
 
 
 def save_hotels_info_in_csv(output_folder: str, df: pd.DataFrame, city: str, counter: int) -> None:

@@ -15,5 +15,4 @@ def run_weather_analysis(input_folder: str, output_folder: str, n_threads: int):
 if __name__ == "__main__":
     run_weather_analysis()
 
-
-# python application_run.py --input_folder=./data/hotels.zip --output_folder=./out --n_threads=40
+# python application_run.py --input_folder=./weather_analysis/data/hotels.zip --output_folder=/weather_analysis/output_data --n_threads=50
