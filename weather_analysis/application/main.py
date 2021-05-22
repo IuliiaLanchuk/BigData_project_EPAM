@@ -17,7 +17,7 @@ def main(input_folder: str, output_folder: str, n_threads: int) -> None:
     df = get_top_cities_with_max_hotels(collected_valid_data)
     print('Collecting data of hotels address...')
     multithreading_data_enrichment_with_address(output_folder, df, n_threads)
-    weather = get_weather_forecast(df, output_folder)
+    weather = get_weather_forecast(df, output_folder, n_threads)
     plots_creation(weather, output_folder)
     get_temperature_analysis(weather)
     print('Analysis is over. See results in output folder')

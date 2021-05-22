@@ -1,3 +1,4 @@
+from concurrent.futures.thread import ThreadPoolExecutor
 from datetime import timedelta, date
 from pathlib import Path
 from typing import List
@@ -10,7 +11,7 @@ import matplotlib.pyplot as plt
 DAYS_AMOUNT = 11
 
 
-def get_weather_forecast(df: pd.DataFrame, output_folder: str) -> pd.DataFrame:
+def get_weather_forecast(df: pd.DataFrame, output_folder: str, n_threads: int) -> pd.DataFrame:
     """
     Return dataFrame of weather parameters of center cities for period of 5 days before today, today and 5 days next.
     :param df: Pandas dataframe with data without weather info.
@@ -19,9 +20,9 @@ def get_weather_forecast(df: pd.DataFrame, output_folder: str) -> pd.DataFrame:
     """
     center_coords = get_city_center_coordinates(df.groupby(["City"]))
     lat_long_pair = center_coords.apply(lambda row: (row["Latitude"], row["Longitude"]), axis=1)
-    all_centres_ids = get_all_centers_ids(lat_long_pair)
+    all_centres_ids = get_all_centers_ids(lat_long_pair, n_threads)
     weather_all_cities_11_days = get_weather_for_previous_5_days_today_and_next_5_days(all_centres_ids['Woeid'].values,
-                                                                                       date.today())
+                                                                                       date.today(), n_threads)
     df_center_coords_and_ids = pd.concat([center_coords, all_centres_ids], axis=1)
     df_weather_and_coord_ids = df_center_coords_and_ids.merge(weather_all_cities_11_days, on=["Woeid"])
     save_center_info(df_weather_and_coord_ids, output_folder)
@@ -55,7 +56,7 @@ def get_city_center_coordinates(data: pd.DataFrame) -> pd.DataFrame:
     return DataFrame(data)
 
 
-def get_all_centers_ids(lat_long: pd.Series) -> pd.DataFrame:
+def get_all_centers_ids(lat_long: pd.Series, n_threads: int) -> pd.DataFrame:
     """
     Return dataframe of center woeids and center city name.
     :param lat_long: Pandas Series object with latitude and longitude pair values.
@@ -64,8 +65,9 @@ def get_all_centers_ids(lat_long: pd.Series) -> pd.DataFrame:
     urls = [f'https://www.metaweather.com//api/location/search/?lattlong={i[0]},{i[1]}' for i in lat_long.values]
     woeids = []
     cities = []
-    for url in urls:
-        req = requests.get(url)
+    with ThreadPoolExecutor(max_workers=n_threads) as pool:
+        responses = pool.map(requests.get, urls)
+    for req in responses:
         if req.status_code == 200:
             responce = req.json()[0]
             woeids.append(responce["woeid"])
@@ -74,7 +76,7 @@ def get_all_centers_ids(lat_long: pd.Series) -> pd.DataFrame:
     return DataFrame(data)
 
 
-def get_weather_for_previous_5_days_today_and_next_5_days(center_woeids: List[int], today: date) -> pd.DataFrame:
+def get_weather_for_previous_5_days_today_and_next_5_days(center_woeids: List[int], today: date, n_threads: int) -> pd.DataFrame:
     """
     Return dataframe of weather parameters of center cities for peroid of 5 days before today, today and 5 days next.
     :param center_woeids: List of centers woeids values.
@@ -86,8 +88,9 @@ def get_weather_for_previous_5_days_today_and_next_5_days(center_woeids: List[in
     urls = [f'{base_url}{woeid}/{date}/' for woeid in center_woeids for date in date_range]
     result = {'Woeid': [id_ for id_ in center_woeids for i in range(11)], 'temp_min, C': [], 'temp_max, C': [],
               'day': []}
-    for url in urls:
-        res = requests.get(url)
+    with ThreadPoolExecutor(max_workers=n_threads) as pool:
+        responses = pool.map(requests.get, urls)
+    for res in responses:
         if res.status_code == 200:
             response = res.json()[0]
             result['temp_min, C'].append(response["min_temp"])

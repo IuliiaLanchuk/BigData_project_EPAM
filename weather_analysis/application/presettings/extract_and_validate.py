@@ -1,3 +1,4 @@
+import os
 import re
 import zipfile
 from typing import Any
@@ -5,20 +6,21 @@ from typing import Any
 import pandas as pd
 
 
-def get_extracted_grouped_data(input_folder: str) -> pd.DataFrame:
+def get_extracted_grouped_data(archive_path: str) -> pd.DataFrame:
     """
     Extract csv files from zip archive and concatenate grouped data from files to one dataframe.
-    :param input_folder: Path to archive with files.
+    :param archive_path: Path to archive with files.
     :return: Pandas dataframe with data about cities which have maximum hotels.
     """
     print('Extracting ZIP.')
-    archive = zipfile.ZipFile(input_folder, 'r')
-    archive.extractall()
+    dir_archive = os.path.dirname(archive_path)
+    archive = zipfile.ZipFile(archive_path, 'r')
+    archive.extractall(dir_archive)
     print('ZIP Extracted.')
     archive.close()
-    all_data = (data_cleaning_from_invalid(pd.read_csv(file_info.filename, sep=',', verbose=True, encoding="utf-8",
-                                                        index_col='Id')) for file_info in archive.infolist())
-
+    all_data = (data_cleaning_from_invalid(
+        pd.read_csv(os.path.join(dir_archive, file_info.filename), sep=',', verbose=True, encoding="utf-8",
+                    index_col='Id')) for file_info in archive.infolist())
     return pd.concat(all_data)
 
 
