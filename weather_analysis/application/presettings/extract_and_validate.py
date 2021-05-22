@@ -29,14 +29,11 @@ def data_cleaning_from_invalid(df: pd.DataFrame) -> pd.DataFrame:
     :return: Pandas dataframe with filtered data.
     """
     df = df.dropna()
-    long = 'Longitude'
-    lat = 'Latitude'
-    df_valid_lat = df[df[lat].apply(regex_filter, parameter=lat)]
-    df_valid_lat_long = df_valid_lat[df_valid_lat[long].apply(regex_filter, parameter=long)]
-    # df_valid_lat_long[lat] = float(df_valid_lat_long.loc[:, lat].values[0])
-    # df_valid_lat_long[long] = float(df_valid_lat_long.loc[:, long].values[0])
-    df_valid_lat_long['Latitude'] = df_valid_lat_long['Latitude'].apply(lambda lat: float(lat))
-    df_valid_lat_long['Longitude'] = df_valid_lat_long['Longitude'].apply(lambda long: float(long))
+    df_valid_lat = df.loc[df.loc[:, 'Latitude'].apply(regex_filter, parameter='Latitude')]
+    df_valid_lat_long = df_valid_lat.loc[
+        df_valid_lat.loc[:, 'Longitude'].apply(regex_filter, parameter='Longitude')]
+    df_valid_lat_long = df_valid_lat_long.assign(Latitude=pd.to_numeric(df_valid_lat_long.loc[:, 'Latitude']))
+    df_valid_lat_long = df_valid_lat_long.assign(Longitude=pd.to_numeric(df_valid_lat_long.loc[:, 'Longitude']))
     return df_valid_lat_long
 
 

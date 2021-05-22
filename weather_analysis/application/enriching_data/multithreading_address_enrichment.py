@@ -17,9 +17,9 @@ def multithreading_data_enrichment_with_address(output_folder: str, df: DataFram
     """
     geocoder = GoogleGeocoder(os.environ.get("API_KEY")) or "No access to API_KEY"
     with ThreadPoolExecutor(max_workers=n_threads) as pool:
-        df['Address'] = df.apply(lambda row: (row["Latitude"], row["Longitude"]), axis=1) \
-            .apply(lambda coordinates: pool.submit(geocoder.get, coordinates)) \
-            .apply(lambda future_result: future_result.result()[0])
+        df = df.assign(Address=df.apply(lambda row: (row["Latitude"], row["Longitude"]), axis=1)
+                       .apply(lambda coordinates: pool.submit(geocoder.get, coordinates))
+                       .apply(lambda future_result: future_result.result()[0]))
         print('Data about hotels addresses was collected.')
 
         hotels_city_data_split_by_100_before_save(output_folder, df)
