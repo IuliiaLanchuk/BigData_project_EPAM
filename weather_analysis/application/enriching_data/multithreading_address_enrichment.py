@@ -36,22 +36,22 @@ def hotels_city_data_split_by_100_before_save(output_folder: str, top_cities: pd
         frame = top_cities.loc[top_cities['City'].values == city]
         page_number = 1
         for i in range(0, len(frame), 99):
-            save_hotels_info_in_csv(output_folder, frame.iloc[i:i+99], city, page_number)
+            save_hotels_info_in_csv(output_folder, frame.iloc[i:i + 99], city, page_number)
             page_number += 1
 
 
-def save_hotels_info_in_csv(output_folder: str, df: pd.DataFrame, city: str, counter: int) -> None:
+def save_hotels_info_in_csv(output_folder: str, df: pd.DataFrame, city: str, page_number: int) -> None:
     """
     Save split data from csv files output_folder.
     :param output_folder: Path to save data results.
     :param df: Pandas dataframe with data.
     :param city: City name from data.
-    :param counter: File number of a specific city.
+    :param page_number: File number of a specific city.
     :return: None.
     """
     country = df['Country'].values[0]
     file_path = Path(f"{output_folder}/{country}/{city}")
     file_path.mkdir(exist_ok=True, parents=True)
-    df.to_csv(path_or_buf=file_path / f"{city}_hotels_info_{counter}.csv", index=True, header=True, sep=',')
+    df.to_csv(path_or_buf=file_path / f"{city}_hotels_info_{page_number}.csv", index=True, header=True, sep=',')
     print(
-        f"Data for hotels in {city}, {country} was saved in file '{output_folder}/{country}/{city}_hotels_info_{counter}.csv'")
+        f"Data for hotels in {city}, {country} was saved in file '{output_folder}/{country}/{city}_hotels_info_{page_number}.csv'")
