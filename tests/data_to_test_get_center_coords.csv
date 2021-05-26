@@ -1,0 +1,8 @@
+Id,Name,Country,City,Latitude,Longitude
+0,Hotel1,US,NewYork,2.00,3.00
+1,Hotel2,US,NewYork,2.00,5.00
+2,Hotel3,US,NewYork,1.00,1.00
+3,Hotel1,RU,Moscow,1.00,3.00
+4,Hotel2,RU,Moscow,1.00,4.00
+5,Hotel3,RU,Moscow,7.00,1.00
+6,Hotel4,RU,Moscow,1.00,1.00
